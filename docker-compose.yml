@@ -1,0 +1,17 @@
+version: '2'
+services:
+  influxdb:
+    image: influxdb:1.8
+    ports:
+      - '8086:8086'
+    volumes:
+      - influxdb-storage:/mnt/shared/code/influxdb
+    environment: 
+      - INFLUXDB_DB=db
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=123456789
+  app:
+    build: .
+      
+volumes:
+  influxdb-storage:  
